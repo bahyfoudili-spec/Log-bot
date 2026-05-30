@@ -139,6 +139,17 @@ module.exports = function setupMinecraftWebhook(app, client) {
           .setTimestamp();
         break;
 
+      // ─── شات ─────────────────────────────────────────────────────────────────
+      case 'chat':
+        channelId = C.MC_CH_CHAT;
+        embed = new EmbedBuilder()
+          .setColor('#5865F2')
+          .setAuthor({ name: data.player || 'غير معروف', iconURL: `https://mineskin.eu/helm/${data.player}/100.png` })
+          .setDescription(`💬 ${data.message || '...'}`)
+          .setFooter({ text: 'Minecraft Chat' })
+          .setTimestamp();
+        break;
+
       default:
         return res.status(400).json({ error: 'نوع غير معروف' });
     }
